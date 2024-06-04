@@ -7,4 +7,6 @@ Integrantes:
 
 
 Se usa flask <br>
+```
 pip install flask
+```
