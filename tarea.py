@@ -1,4 +1,4 @@
-from flask import request
+import requests
 import csv
 from math import sin, cos, sqrt, atan2, radians
 
@@ -77,7 +77,7 @@ def main():
             ciudad1 = Ciudad(input("Ingrese el nombre de la primera ciudad: "), input("Ingrese el nombre del país de la primera ciudad: "))
             ciudad2 = Ciudad(input("Ingrese el nombre de la segunda ciudad: "), input("Ingrese el nombre del país de la segunda ciudad: "))
 
-            obtenerCoordenadas = ObtenerCoordenadasCSV("worldcities.csv")
+            obtenerCoordenadas = ObtenerCoordenadasAPI()
             coord1 = obtenerCoordenadas.obtener(ciudad1)
             coord2 = obtenerCoordenadas.obtener(ciudad2)
 
@@ -88,7 +88,7 @@ def main():
             ciudad2 = Ciudad(input("Ingrese el nombre de la segunda ciudad: "), input("Ingrese el nombre del país de la segunda ciudad: "))
             ciudad3 = Ciudad(input("Ingrese el nombre de la tercera ciudad: "), input("Ingrese el nombre del país de la tercera ciudad: "))
 
-            obtenerCoordenadas = ObtenerCoordenadasCSV("worldcities.csv")
+            obtenerCoordenadas = ObtenerCoordenadasAPI()
             coord1 = obtenerCoordenadas.obtener(ciudad1)
             coord2 = obtenerCoordenadas.obtener(ciudad2)
             coord3 = obtenerCoordenadas.obtener(ciudad3)
