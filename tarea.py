@@ -66,22 +66,47 @@ def calcular_distancia(coord1, coord2):
     return R * c
 
 def main():
-    ciudad1 = Ciudad("Tokyo", "Japan")
-    ciudad2 = Ciudad("Delhi", "India")
+    while True:
+        print("Que desea hacer?")
+        print("1. Calcular la distancia entre dos ciudades")
+        print("2. Hallar el par de ciudades más cercano en comparación a un tercero")
+        print("3. Salir")
+        opcion = int(input("Ingrese el número de la opción deseada: "))
 
-    # Puedes cambiar entre diferentes implementaciones aquí
-    obtenerCoordenadas = ObtenerCoordenadasCSV("worldcities.csv")
-    # obtenerCoordenadas = ObtenerCoordenadasAPI()
-    # obtenerCoordenadas = ObtenerCoordenadasMock()
+        if opcion == 1:
+            ciudad1 = Ciudad(input("Ingrese el nombre de la primera ciudad: "), input("Ingrese el nombre del país de la primera ciudad: "))
+            ciudad2 = Ciudad(input("Ingrese el nombre de la segunda ciudad: "), input("Ingrese el nombre del país de la segunda ciudad: "))
 
-    coord1 = obtenerCoordenadas.obtener(ciudad1)
-    coord2 = obtenerCoordenadas.obtener(ciudad2)
+            obtenerCoordenadas = ObtenerCoordenadasCSV("worldcities.csv")
+            coord1 = obtenerCoordenadas.obtener(ciudad1)
+            coord2 = obtenerCoordenadas.obtener(ciudad2)
 
-    if coord1.latitud != 0.0 and coord1.longitud != 0.0 and coord2.latitud != 0.0 and coord2.longitud != 0.0:
-        distancia = calcular_distancia(coord1, coord2)
-        print(f"La distancia entre {ciudad1.nombreCiudad} y {ciudad2.nombreCiudad} es de {distancia} km.")
-    else:
-        print("No se encontraron las coordenadas de una de las ciudades.")
+            distancia = calcular_distancia(coord1, coord2)
+            print(f"La distancia entre {ciudad1.nombreCiudad} en {ciudad1.nombrePais} y {ciudad2.nombreCiudad} en {ciudad2.nombrePais} es de {distancia} km.")
+        elif opcion == 2:
+            ciudad1 = Ciudad(input("Ingrese el nombre de la primera ciudad: "), input("Ingrese el nombre del país de la primera ciudad: "))
+            ciudad2 = Ciudad(input("Ingrese el nombre de la segunda ciudad: "), input("Ingrese el nombre del país de la segunda ciudad: "))
+            ciudad3 = Ciudad(input("Ingrese el nombre de la tercera ciudad: "), input("Ingrese el nombre del país de la tercera ciudad: "))
+
+            obtenerCoordenadas = ObtenerCoordenadasCSV("worldcities.csv")
+            coord1 = obtenerCoordenadas.obtener(ciudad1)
+            coord2 = obtenerCoordenadas.obtener(ciudad2)
+            coord3 = obtenerCoordenadas.obtener(ciudad3)
+
+            distancia1 = calcular_distancia(coord1, coord3)
+            distancia2 = calcular_distancia(coord2, coord3)
+            distancia3 = calcular_distancia(coord1, coord2)
+
+            if distancia1 < distancia2 and distancia1 < distancia3:
+                print(f"La distancia más corta es entre {ciudad1.nombreCiudad} en {ciudad1.nombrePais} y {ciudad3.nombreCiudad} en {ciudad3.nombrePais} con {distancia1} km.")
+            elif distancia2 < distancia1 and distancia2 < distancia3:
+                print(f"La distancia más corta es entre {ciudad2.nombreCiudad} en {ciudad2.nombrePais} y {ciudad3.nombreCiudad} en {ciudad3.nombrePais} con {distancia2} km.")
+            else:
+                print(f"La distancia más corta es entre {ciudad1.nombreCiudad} en {ciudad1.nombrePais} y {ciudad2.nombreCiudad} en {ciudad2.nombrePais} con {distancia3} km.")
+        elif opcion == 3:
+            break
+        else:
+            print("Opción inválida. Intente de nuevo.")
 
 if __name__ == "__main__":
     main()
