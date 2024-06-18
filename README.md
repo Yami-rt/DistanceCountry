@@ -19,3 +19,5 @@ python3 tarea.py
 ```py
 python3 test.py
 ```
+### Resultados de Test:
+<img src="resultados.png" alt="resultados" width="700"/>
