@@ -9,6 +9,7 @@ Integrantes:
 Se usa flask <br>
 ```
 pip install flask
+pip install requests
 ```
 - Para correr el archivo de distancias y su consola en terminal:
 ```py
