@@ -24,7 +24,7 @@ class ObtenerCoordenadasMock(ObtenerCoordenadas):
 class ObtenerCoordenadasAPI(ObtenerCoordenadas):
     def obtener(self, ciudad):
         url = f"https://nominatim.openstreetmap.org/search?q={ciudad.nombreCiudad},{ciudad.nombrePais}&format=json"
-        response = request.get(url)
+        response = requests.get(url)
         if response.ok:
             data = response.json()
             if data:
